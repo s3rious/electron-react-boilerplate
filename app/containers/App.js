@@ -1,18 +1,23 @@
-import React, { Component, PropTypes } from 'react';
+/* @flow */
+import React, { Component } from 'react';
+import DevTools from './DevTools.js';
+
+type Props = {
+  children: ReactElement
+}
 
 export default class App extends Component {
-  static propTypes = {
-    children: PropTypes.element.isRequired
-  };
+  props: Props;
 
-  render() {
+  render(): ReactElement {
     return (
       <div>
         {this.props.children}
         {
           (() => {
             if (process.env.NODE_ENV !== 'production') {
-              const DevTools = require('./DevTools');
+              // CommonJS exports of "./DevTools.js". This type is incompatible with ReactClass
+              // const DevTools = require('./DevTools.js');
               return <DevTools />;
             }
           })()

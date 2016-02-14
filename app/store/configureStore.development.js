@@ -1,3 +1,4 @@
+/* @flow */
 import { createStore, applyMiddleware, compose } from 'redux';
 import { persistState } from 'redux-devtools';
 import thunk from 'redux-thunk';
@@ -17,7 +18,7 @@ const enhancer = compose(
   )
 );
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState: State): Store {
   const store = createStore(rootReducer, initialState, enhancer);
 
   reduxRouterMiddleware.listenForReplays(store);

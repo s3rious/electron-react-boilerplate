@@ -11,12 +11,16 @@
     "react/jsx-uses-vars": 2,
     "react/react-in-jsx-scope": 2,
 
+    "flow-vars/define-flow-type": 1,
+    "flow-vars/use-flow-type": 1,
+
     "no-var": 0,
     "vars-on-top": 0,
     "comma-dangle": 0,
     "no-use-before-define": 0
   },
   "plugins": [
-    "react"
+    "react",
+    "flow-vars"
   ]
 }

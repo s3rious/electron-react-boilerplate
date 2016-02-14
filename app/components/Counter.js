@@ -1,17 +1,20 @@
-import React, { Component, PropTypes } from 'react';
+/* @flow */
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import styles from './Counter.module.css';
 
-class Counter extends Component {
-  static propTypes = {
-    increment: PropTypes.func.isRequired,
-    incrementIfOdd: PropTypes.func.isRequired,
-    incrementAsync: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired,
-    counter: PropTypes.number.isRequired
-  };
+type Props = {
+  increment: Function,
+  incrementIfOdd: Function,
+  incrementAsync: Function,
+  decrement: Function,
+  counter: number
+}
 
-  render() {
+class Counter extends Component {
+  props: Props;
+
+  render(): ReactElement {
     const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props;
     return (
       <div>

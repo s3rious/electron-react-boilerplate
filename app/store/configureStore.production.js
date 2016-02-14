@@ -1,3 +1,5 @@
+/* @flow */
+
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { hashHistory } from 'react-router';
@@ -9,10 +11,8 @@ const enhancer = compose(
   applyMiddleware(thunk, reduxRouterMiddleware)
 );
 
-export default function configureStore(initialState) {
-  return createStore(rootReducer, initialState, enhancer);
-
+export default function configureStore(initialState: State): Store {
+  const store = createStore(rootReducer, initialState, enhancer);
   reduxRouterMiddleware.listenForReplays(store);
-
   return store;
 }
